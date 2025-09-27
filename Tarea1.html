@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <title>Armazon Store</title>
+    <style>
+        /*Estilo del cuerpo de la pagina */
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /*Estilo del encabezado */
+        header {
+            background-color: #3b8c59;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative; 
+        }
+
+        .logo {
+            width: 120px;
+            position: absolute;
+            top: 10px;   
+            right: 10px; 
+        }
+        /* estilo de menu*/
+        nav {
+            background: #3b8c59;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav form {
+            display: inline-block; 
+            margin-left: 20px;
+            padding: 100px 20px;
+            color: black;
+        }
+        
+        /* estilo Seccion principal*/
+        .hero {
+            background: url('safe_shopping_1.jpg') no-repeat right center;
+            color: black;
+            text-align: left;
+            padding: 100px 20px;
+        }
+        /* Estilo de demas secciones*/
+        .section {
+            padding: 40px;
+            text-align: center;
+        }
+        /*estilo de las categorias */
+        .categoria-item {
+            margin: 15px 0;
+        }
+        /*Estilo del pie de pagina */
+        footer {
+            background: #3b8c59;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<!-- Encabezado -->
+<header>
+    <h1>Armazon Store</h1>
+    <em>Si sientes que lo necesitas... Compralo!</em>
+    <img src="image.png" alt="Logo de Armazon" class="logo">
+</header>
+
+<!-- Navegación -->
+<nav>
+    <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#Categorias">Categorias</a></li>
+        <li><a href="#Ofertas">Descuentos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <form action="buscar.html" method="get" style="display:inline;">
+        <label for="buscar">Buscar:</label>
+        <input type="search" id="buscar" name="q" placeholder="Buscar..." required>
+        <button type="submit">🔍</button>
+    </form>
+</nav>
+
+<!-- Principal -->
+<main>
+    <div class="hero" id="inicio">
+        <h2>¡Bienvenido!</h2>
+        <strong>¡Compra con inteligencia y disfruta de tus productos!</strong>
+        <p>En Armazon Store, te ofrecemos una amplia variedad de</p>
+        <p>productos de alta calidad a precios competitivos.</p>
+    </div>
+
+    <!-- Menú -->
+    <section class="section" id="Categorias">
+        <h2>Categorias</h2>
+        <article class="categoria-item">
+            <h3>Ropa</h3>
+            <p>S M L X XL </p>
+        </article>
+        <article class="categoria-item">
+            <h3>Computadores </h3>
+            <p>Intel Core - AMD Ryzen  </p>
+        </article>
+        <article class="categoria-item">
+            <h3>Relojes</h3>
+            <p>Deportivos - Formales - De lujo </p>
+        </article>
+    </section>
+
+    <!-- Ofertas -->
+    <mark><section class="section" id="Ofertas"></section></mark>
+        <h2>Ofertas</h2>
+        <article class="categoria-item">
+            <h3>CPU Gamer</h3>
+            <figure>
+                <img src="PC_gamer.jpeg" alt="Una Pc gamer de alta gama">
+                <figcaption>Oferta limitada</figcaption>
+            </figure>
+            <p>ñintel core i2 - 2 gb ram - 256 gb HDD - Antes: <del>$670</del> --> Ahora: <ins>$659</ins></p>
+        </article>
+    </section>
+
+    <!-- tip -->
+    <aside>
+        <h3>Tip del día</h3>
+        <q>Revisa siempre nuestras ofertas flash para encontrar descuentos especiales.</q>
+    </aside>
+
+    <!-- Contacto -->
+    <section class="section" id="contacto">
+        <h2>Contacto</h2>
+        <address>
+            Dirección: Manta - Ecuador <br>
+            Teléfono: <a href="tel:+5931234567891">+593 1234567891</a> <br>
+            Email: <a href="mailto:Elkin@Armazon.Store.com">Elkin@Armazon.Store.com</a>
+        </address>
+    </section>
+</main>
+
+<!-- Pie de página -->
+<footer>
+    <small>&copy; 2025 <cite>Armazon Store</cite> - Elkin Cantos - Todos los derechos reservados</small>
+</footer>
+
+</body>
+</html>
