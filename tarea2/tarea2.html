@@ -1,0 +1,226 @@
+<!-- Hoja de vida-->
+<!DOCTYPE html>
+<html> 
+<head>  
+    <title> Hoja de vida personal</title>
+    <style>
+        /*Estilo predeterminado del encabezado de la pagina */
+        header {
+        background: #8abc94 url('FotodePerfil.jpg') no-repeat left center;
+        background-size: 180px auto;
+        color: white;
+        padding: 10px;
+        position: relative;
+        min-height: 70px;}
+        
+            /*Alinear a la izquierda el texto del encabezado*/
+            header h1 {
+            font-family: 'Arial Black', sans-serif;
+            text-align: left;
+            padding-left: 200px;    }
+
+        .info-personal {
+        background: linear-gradient(to right, 
+        #8abc94 0%,    
+        #8abc94 2%,  
+        white 2%,     
+        white 98%,     
+        #8abc94 98%,  
+        #8abc94 100%); 
+        padding: 10px;
+        color: black;}
+
+            .fila {
+            display: flex;
+            gap: 40px; 
+            margin-bottom: 4px;
+            text-align: left;
+            font-weight: normal;
+            padding-left: 200px; 
+            font-size: 18px;
+            font-family: 'Times New Roman', sans-serif   }
+                
+        /*Estilo predeterminado del cuerpo*/
+        body{
+            font-family: 'Times New Roman', sans-serif;
+            margin: 0;
+            padding: 0;}
+        
+        .Educacion {
+            padding: 20px;  
+            text-align: left;
+            font-size: 18px;
+            font-family: 'Times New Roman', sans-serif;
+            margin-left: 60px;}
+             /* Para educacion, Experiencia labora y el resto se usa tipografia diferente */
+            .Tema {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Arial Black', sans-serif;
+            margin-left: 20px;
+            }
+             /* Diseño de la linea */
+            .linea {
+            border: none;          
+            height: 3px;           
+            background-color: #3b8c59; 
+            width: 80%;            
+            margin: 20px auto;     
+            margin-left: 20px;
+            }
+        .Experiencia-Laboral {
+            padding: 20px;  
+            text-align: left;
+            font-size: 18px;
+            font-family: 'Times New Roman', sans-serif;
+            margin-left: 60px;}
+        
+        .Capacitaciones {
+            padding: 20px;  
+            text-align: left;
+            font-size: 18px;
+            font-family: 'Times New Roman', sans-serif;
+            margin-left: 60px;}
+
+        .Referencias-Personales {
+            padding: 20px;
+            text-align:left;
+            font-size:18px;
+            font-family: 'Times New Roman', sans-serif;
+            margin-left: 60px;}
+
+        /*La tabla de referencias*/
+        .tabla {
+            width: 80%;           
+            border-collapse: collapse; 
+            margin: 20px auto;     
+            margin-left: 60px;
+            }
+
+            .mi-tabla th, .mi-tabla td {
+            border: 1px solid #3b8c59; 
+            padding: 10px;
+            text-align: center;
+            }
+
+            .mi-tabla th {
+            background-color: #8abc94; 
+            color: white;
+            }
+
+        .Pie-de-pagina {
+            background: #8abc94;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            position: relative;
+            bottom: 0;
+            width: 100%;}
+        /*Diseño*/
+        .diseño { background: linear-gradient(to right, 
+        #8abc94 0%,    
+        #8abc94 2%,  
+        white 2%,     
+        white 98%,     
+        #8abc94 98%,  
+        #8abc94 100%); 
+        padding: 15px;}
+
+    </style>
+</head>
+<header>
+        <h1>Elkin Omar Cantos Yépez </h1>    </header>
+    <div class="info-personal">
+        <!--La etiqueta span es para separar los diferentes datos de una forma mas ordenada casi simulando una tabla-->
+        <p class="fila">
+            <span><strong>Documento de Identidad:</strong> 1317159042 </span>
+            <span><strong>Nacionalidad:</strong> Ecuatoriana</span>
+            <span><strong>Estado civil:</strong> Soltero</span>
+        </p>
+        <p class="fila">
+            <span><strong>Lugar de nacimiento:</strong> Manta - Manabí - Ecuador</span>
+            <span><strong>Fecha de nacimiento:</strong> 29 de septiembre del 2005</span>
+            
+        </p>
+        <p class="fila">
+            <span><strong>Teléfono:</strong> +593 099 019 5933</span>
+            <span><strong>Email:</strong> <a href="URL">elkincanto999@gmail.com</a></span>
+            <span><strong>Dirección Domiciliaria:</strong> Montalván - Manta - Ecuador</span>
+        </p>
+        </div>
+
+<body>
+    <div class="Educacion">
+        <!--Se hace uso de hr para crear una linea por cuestiones de diseño-->
+        <h2 class="Tema">Educación</h2>
+        <hr class="linea">
+        <ul>
+            <!--la etiqueta li es un elmento en bloque que separa el contenido de un subtítulo-->
+            <li><strong>Primaria:</strong> </li>
+            <p>Unidad Educativa Militar "Nuevos Horizontes" (2009 - 2012)</p>
+             <p>Unidad Educativa Fiscal "Condor de América" (2013 - 2016)</p>
+            <li><strong>Secundaria:</strong> </li>
+             <p>Unidad Educativa Siglo XXI "Tarqui" (2017 - 2023)</p>
+            <li><strong>Educación Superior:</strong> </li>
+            <p>Universidad Laica Eloy Alfaro de Manabí (2024 - Presente)</p>
+        </ul>
+    </div>
+    <div class ="Experiencia-Laboral">
+        <h2 class="Tema">Experiencia Laboral</h2>
+        <hr class="linea">
+        <ul>
+            <li><strong>Independiente:</strong> </li>
+            <p>Oficial de soldador</p>
+            <p><strong> Tiempo en el cargo:</Strong> 6 años</p>
+            <li><strong>Independiente:</strong></li>
+            <p>Tutor Particular:</p>
+            <p><strong> Tiempo en el cargo:</Strong> 1 año</p>
+        </ul>
+    </div>
+    <div class="Capacitaciones">
+        <h2 class="Tema">Capacitaciones</h2>
+        <hr class="linea">
+        <ul>
+            <li><strong>Sin capacitaciones</strong> </li>
+
+        </ul>
+    </div>
+    <div class="Referencias-Personales">
+        <h2 class="Tema">Referencias Personales</h2>
+        <hr class="linea">
+        <!--Tablas-->
+        <table class="tabla">
+        <tr>
+            <th> Nombres</th>
+            <th> Cargo</th>
+            <th> Telefóno </th>
+            <th> Correo </th>
+        </tr>
+        <tr>
+            <td>Lic. Yuliana Cantos</td>
+            <td> Docente</td>
+            <td> +593 098 254 9785</td>
+            <td> yuli.cantos08@gmail.com</td>
+        </tr>
+        <tr>
+            <td>Mg. Byron Cantos</td>
+            <td>Docente </td>
+            <td>+593 097 463 3141</td>
+            <td>byroncantos34@gmail.com</td>
+        </tr>
+        <tr>
+            <td>Lic. Cecilia Palma</td>
+            <td>Docente</td>
+            <td>+593 099 592 5429 </td>
+            <td>CeciPalma25@gmail.com</td>
+        </tr>
+        </table>
+
+
+        </div>
+</body>
+<p class="diseño"></p>
+<footer class="Pie-de-pagina">
+    <p>&copy; 2024 Elkin Omar Cantos Yépez. Todos los derechos reservados. (Contratenme porfa)</p>  
+</footer>
+</html>
