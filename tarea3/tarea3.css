@@ -1,8 +1,145 @@
-header {
-    background-color: #87adff;
-    padding: 20px;
-    text-align: center;
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("fondo.jpg");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 50px; 
 }
-h1{
-    color:white;
+
+header {
+    background-color: #6e96e6;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+}
+h1 {
+    color: white;
+}
+h2 {
+    color: #333;
+    margin-top: 30px;
+}
+h3 {
+    color: #555;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+#registroFormulario {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Formulario más ancho */
+    margin-top: 20px;
+}
+
+.Secciones {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+.Grupo {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar solo verticalmente */
+}
+
+.check-grupo {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+ .check-grupo label {
+    font-weight: normal;
+    margin-left: 8px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+#btnEnviar {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+#btnEnviar:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el mensaje de validación de JS */
+#validacionMensaje {
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+.mensaje-oculto {
+    display: none;
+}
+.mensaje-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+}
+.mensaje-exito {
+    color: #155724;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+}
+
+.radio-opciones {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px; 
+    padding-top: 5px;
+}
+
+.radio-opciones input[type="radio"] {
+    width: 16px; 
+    height: 16px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.radio-opciones label {
+    display: inline-flex;
+    align-items: center;
+    font-weight: normal; 
+    cursor: pointer;
 }

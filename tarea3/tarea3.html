@@ -1,15 +1,105 @@
 <!DOCTYPE html>
 <html>
-<!-- conexion a javascript-->
-<script src="tarea3.js"></script>
-<!-- conexion a css-->
+
 <link rel="stylesheet" href="tarea3.css">
 <head>
-    <title>Tarea 3</title>  </head>
+    <title>Tarea 3 - Formulario </title>
+</head>
 <header>
-    <h1>Formulario Formulado</h1></header>
+    <h1>Formulario Formulado</h1>
+</header>
 <body> 
-    <h2>Formulario de Registro</h2> 
+    <script src="tarea3.js"></script>
+    <form id="registroFormulario">
+        
+        <div class="Secciones">
+            <h2>Información Personal</h3>
+            <div class="Grupo">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="Grupo">
+                <label for="cedula">Número de Cédula:</label>
+                <input type="text" id="cedula" name="cedula" pattern="[0-9]{10,15}" required>
+            </div>
+
+            <div class="Grupo">
+                <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            </div>
+
+            <div class="Grupo">
+                <label for="estadoCivil">Estado Civil:</label>
+                <select id="estadoCivil" name="estadoCivil" required>
+                    <option value="">-- Seleccione uno --</option>
+                    <option value="soltero">Soltero/a</option>
+                    <option value="casado">Casado/a</option>
+                    <option value="divorciado">Divorciado/a</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+                        <div class="Radio-grupo">
+                <label>Banda Favorita:</label>
+    
+            <div class="radio-opciones">
+                
+                <input type="radio" id="Soda Stereo" name="Banda favorita" value="Soda Stereo">
+                <label for="SodaStereo">Soda Stereo</label>
+
+                <input type="radio" id="Enanitosverdes" name="Banda favorita" value="Enanitosverde">
+                <label for="Enanitosverde">Enanitos Verdes</label>
+
+                <input type="radio" id="Cuarteto de Nos" name="Banda favorita" value="Cuarteto de Nos">
+                <label for="Cuarteto de Nos">Cuarteto de Nos</label>
+
+                <input type="radio" id="Guns and roses" name="Banda favorita" value="Guns and roses">
+                <label for="Guns and roses">Guns and roses</label>
+                
+            </div>
+
+            </div>
+        </div>
+
+
+        </div>
+        <div class="Secciones">
+            <h2>Información de contacto </h2>
+
+            <div class="Grupo">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="Grupo">
+                <label for="numero">Número de teléfono:</label>
+                <input type="text" id="numero" name="numero" required>
+            </div>
+
+
+            <div class="Grupo">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required>
+            </div>
+
+        </div>
+
+        <div class="Secciones">
+            <h2>Comentarios</h2>
+            <div class="Grupo">
+                <label for="comentarios">Comentarios (Opcional):</label>
+                <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+            </div>
+
+            <div class="check-grupo">
+                <input type="checkbox" id="campoCondiciones" name="condiciones" required>
+                <label for="campoCondiciones">Acepto los términos y condiciones</label>
+            </div>
+        </div>
+        
+        <p id="validacionMensaje" class="mensaje-oculto"></p>
+
+        <button type="submit" id="Enviar">Enviar Formulario</button>
+    </form>
 </body>
 </html>
-
