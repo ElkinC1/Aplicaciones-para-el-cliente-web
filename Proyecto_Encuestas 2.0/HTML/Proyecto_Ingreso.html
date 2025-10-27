@@ -1,0 +1,44 @@
+<!--Proyecto de Encuestas-->
+<!doctype html>
+<html>
+<Head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        
+        <link rel="stylesheet" href="C:\Users\Usuario\Desktop\Universidad\U SEM4\Aplicaciones para el cliente Web\Tareas de ACW\Proyecto_Encuestas 2.0\CSS\Proyecto_Ingreso.css">
+        <Title>Encuestas - ULEAM </Title>
+    </Head>
+  <body>
+        <div class="login">
+            <h1> ENCUESTADOS </h1>
+            
+            <div id="mensaje-error" class="error-box">
+                ¡Error! El correo o la contraseña son incorrectos.
+            </div>
+            
+            <div class="correo">
+                <input type="email" id="correo" placeholder="Correo" required class="login-input">
+            </div> 
+            
+            <div class="input-clave-container">
+                <input type="password" id="clave" placeholder="Contraseña">
+                
+                <button type="button" id="togglePassword" class="toggle-password" onclick="toggleClave()">
+                    <i class="far fa-eye"></i> 
+                </button>
+            </div>
+            
+            <button type="button" class="login-button" onclick="botonIngreso()"> 
+                Ingresar
+            </button> 
+            
+            <div class="opcion-recordar">
+                <input type="checkbox" id="recordar-sesion">
+                <label for="recordar-sesion">Recordar sesión</label>
+            </div>
+        
+        </div>
+    <script src="C:\Users\Usuario\Desktop\Universidad\U SEM4\Aplicaciones para el cliente Web\Tareas de ACW\Proyecto_Encuestas 2.0\JavaScript\Proyecto_ingreso.js"></script></body>
+</html>

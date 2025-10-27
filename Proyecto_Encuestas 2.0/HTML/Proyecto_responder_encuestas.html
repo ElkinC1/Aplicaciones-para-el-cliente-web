@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Responder Encuesta - ULEAM</title>
+    <link rel="stylesheet" href="../CSS/Proyecto_responder_Encuestas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+    <div class="page-background">
+
+        <div class="response-container">
+            
+            <header class="response-header">
+                <button class="btn-back" onclick="window.location.href='Proyecto_Pagina_Principal.html'">
+                    <i class="fas fa-arrow-left"></i> Volver al Panel
+                </button>
+                <h1 id="titulo-encuesta-responder">Seleccione una Encuesta para Responder</h1>
+                
+                <button class="btn-seleccionar-encuesta" onclick="mostrarModalSeleccion()">
+                    <i class="fas fa-list-alt"></i> Ver Encuestas Pendientes
+                </button>
+            </header>
+
+            <form id="formulario-respuestas" class="encuesta-form" onsubmit="event.preventDefault(); guardarRespuestas()">
+                
+                <p id="descripcion-encuesta-responder" class="descripcion-responder">
+                    Presione "Ver Encuestas Pendientes" para empezar.
+                </p>
+                
+                <div id="preguntas-responder-container">
+                    <p>Las preguntas del formulario aparecerán aquí una vez seleccionada la encuesta.</p>
+                </div>
+                
+                <button type="submit" id="btn-enviar-respuestas" class="btn-submit-response" style="display:none;">
+                    <i class="fas fa-paper-plane"></i> Enviar Respuestas
+                </button>
+            </form>
+
+        </div>
+    </div>
+    
+    <div id="modal-seleccion-encuesta" class="modal-oculto">
+        <div class="modal-contenido">
+            <h3>Encuestas Pendientes</h3>
+            <div id="lista-encuestas-pendientes" class="lista-encuestas">
+                <p>Cargando lista...</p>
+            </div>
+            <button class="btn-cerrar-modal" onclick="ocultarModalSeleccion()">Cerrar</button>
+        </div>
+    </div>
+    
+    <script src="../JavaScript/Proyecto_responder_Encuestas.js"></script>
+</body>
+</html>

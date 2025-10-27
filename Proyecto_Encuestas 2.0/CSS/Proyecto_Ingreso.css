@@ -1,0 +1,166 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: rgb(222, 222, 222);
+}
+
+/* Aplica a todos los inputs excepto contraseña y el botón, ya que tienen su propio estilo */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 25px; 
+
+}
+
+/* --- Estilos del Contenedor de Login --- */
+.login {
+    background: white url(LOGO-ULEAM.png) no-repeat left top; 
+    background-size: 180px auto;
+    min-height: 70px;
+    width: 600px; 
+    max-width: 90%; 
+    
+
+    margin: 10px auto; 
+    padding: 100px; 
+    border: 1px solid #eee;
+    border-radius: 6px;
+}
+
+
+/* --- Estilos de los Inputs de Login (Correo y Contraseña) --- */
+.login-input {
+    display: block;
+    width: 100%;
+    max-width: 350px; 
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+/* Contenedor que agrupa el input y el botón */
+.input-clave-container {
+    position: relative; 
+    width: 350px; 
+    max-width: 100%;
+    margin: 15px auto; 
+}
+
+/* El input de contraseña debe tener padding a la derecha para no tapar el ícono */
+#clave {
+    width: 100%;
+    padding-right: 40px;     
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos del botón de "Ver Contraseña" */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px; 
+    transform: translateY(-50%);
+    
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #666;
+    font-size: 16px;
+    z-index: 10;
+}
+
+/* --- Estilos del Botón "Acceder" --- */
+.login-button {
+    display: block;
+
+    width: 40%;
+    max-width: 350px; 
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    padding: 12px 25px;
+    background-color: #df0707; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    font-size: 16px; 
+    font-weight: bold;
+    text-transform: capitalize; 
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto al pasar el ratón (hover) */
+.login-button:hover, .login-button2:hover {
+    background-color: #13e833;
+}
+
+/* Estilo para el hipervínculo */
+.login-hipervinculo {
+    display: block;
+    width: 350px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    /* Estilos de apariencia */
+    color: #007bff; 
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.error-box {
+    display: none;
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 0 auto 15px auto; 
+    width: 350px; 
+    max-width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .login {
+        width: 92%;
+        padding: 40px 20px;
+        background-size: 120px auto;
+    }
+    .login-input, #clave {
+        width: 100%;
+    }
+    .login-button { width: 100%; }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Encuestas - ULEAM</title>
+    <link rel="stylesheet" href="C:\Users\Usuario\Desktop\Universidad\U SEM4\Aplicaciones para el cliente Web\Tareas de ACW\Proyecto_Encuestas 2.0\CSS\Proyecto_Pagina_Principal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    
+    <header id="main-header">
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <img src="LOGO-ULEAM.png" alt="ULEAM" class="logo">
+            
+            <button id="btn-mis-encuestas" class="sidebar-btn" onclick="mostrarVistaDashboard()">Mis Encuestas</button>
+            
+            <div class="sidebar-bottom">
+                <button id="btn-cerrar-sesion" class="logout-btn" onclick="cerrarSesion()">Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <section class="content">
+            <div class="user-panel">
+                <span id="mensajeBienvenida" class="user-name">Nombre-Del-Usuario</span> 
+                <div class="user-actions">
+                    <button id="btn-crear-encuesta" class="action-btn" onclick="crearEncuesta()">➕ Crear una encuesta</button>
+                    <button id="btn-responder-encuesta" class="action-btn" onclick="responderEncuesta()">📋 Ingresar a una encuesta</button>
+                </div>
+            </div>
+
+            <div id="vista-dashboard">
+                <div id="encuestas-container" class="encuestas">
+                    <p style="padding: 20px;">Cargando tus encuestas...</p>
+                </div>
+            </div>
+
+            <div id="vista-resultados" class="vista-oculta">
+                
+                <button class="btn-volver-dashboard" onclick="mostrarVistaDashboard()">
+                    <i class="fas fa-arrow-left"></i> Volver al Listado de Encuestas
+                </button>
+                
+                <h2 id="titulo-resultados" class="titulo-resultados-view">Cargando Resultados...</h2>
+
+                <div id="informacion-general" class="info-general-card">
+                    <div class="info-item">
+                        <span>Respuestas</span>
+                        <strong id="total-respuestas">0</strong>
+                    </div>
+                    <div class="info-item">
+                        <span>Duración (Días)</span>
+                        <strong id="duracion-encuesta">N/A</strong>
+                    </div>
+                </div>
+
+                <div id="resultados-preguntas-container" class="resultados-preguntas-container">
+                    </div>
+            </div>
+            
+        </section>
+    </main>
+    <script src="C:\Users\Usuario\Desktop\Universidad\U SEM4\Aplicaciones para el cliente Web\Tareas de ACW\Proyecto_Encuestas 2.0\JavaScript\Proyecto_Pagina_Principal.js"></script>  
+</body>
+</html>

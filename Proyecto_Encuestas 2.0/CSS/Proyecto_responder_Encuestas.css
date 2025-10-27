@@ -1,0 +1,204 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+.page-background {
+    width: 100%;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.response-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    transition: background-color 0.3s;
+}
+
+.response-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.response-header h1 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 100px;
+}
+
+.btn-back {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-seleccionar-encuesta {
+    background-color: #ffc107;
+    color: #333;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.descripcion-responder {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.pregunta-responder-card {
+    border: 1px solid #eee;
+    border-left: 5px solid #B22222;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.pregunta-responder-card h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.pregunta-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.opcion-label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    cursor: pointer;
+    padding: 5px 0;
+}
+
+.opcion-label input[type="radio"], 
+.opcion-label input[type="checkbox"] {
+    margin-right: 10px;
+    width: 18px;
+    height: 18px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    font-size: 1em;
+}
+
+.btn-submit-response {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.modal-oculto {
+    display: none !important; 
+    visibility: hidden !important; 
+}
+
+#modal-seleccion-encuesta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-contenido {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lista-encuestas {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.pendiente-card {
+    border: 1px solid #eee;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.pendiente-card:hover {
+    background-color: #e9f0ff;
+}
+
+.pendiente-card h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+.pendiente-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.btn-seleccionar {
+    font-size: 0.8em;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.btn-cerrar-modal {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

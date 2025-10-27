@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background-color: #f8f8f8;
+}
+
+/* 3. CRÍTICO: Estilos base para que el header muestre el color */
+#main-header {
+    height: 60px; 
+    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 100;
+    color: white; 
+    transition: background-color 0.4s ease;
+}
+
+.rol-estudiante {
+    background-color: #1E90FF; 
+}
+
+.rol-profesor {
+    background-color: #3CB371; 
+}
+
+.rol-administrador {
+    background-color: #B22222;
+}
+
+
+main {
+    display: flex;
+
+    padding-top: 60px; 
+    min-height: 100vh; 
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: white;
+    width: 250px;
+    border-right: 1px solid #ddd;
+    padding: 20px;
+    
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: calc(100vh - 60px); 
+    position: sticky;
+    top: 60px;
+}
+
+.logo {
+    width: 100%;
+    max-width: 180px;
+    margin-bottom: 30px;
+}
+
+.sidebar-btn {
+    background: #e3e3e3;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.sidebar-btn:hover {
+    background: #ccc;
+}
+
+/* Contenedor que empuja el botón Cerrar Sesión al final */
+.sidebar-bottom {
+    margin-top: auto; 
+    width: 100%;
+}
+
+/* 1. CRÍTICO: Estilos del botón Cerrar Sesión para que se vea */
+.logout-btn {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* User Panel */
+.user-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    background: #0056b3;
+}
+
+/* Vistas y Encuestas */
+.vista-oculta {
+    display: none !important; 
+}
+
+#vista-dashboard, #vista-resultados {
+    width: 100%;
+}
+
+.encuestas {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.encuestas.visible {
+    /* 2. CRÍTICO: Esto hace que el botón Mis Encuestas funcione */
+    display: flex;
+}
+
+.encuesta {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.encuesta h3 {
+    margin-bottom: 8px;
+}
+
+.view-btn {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    float: right;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    background: #333;
+}
+
+
+/* --- Estilos de la Vista de Resultados --- */
+.btn-volver-dashboard {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.titulo-resultados-view {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.info-general-card {
+    display: flex;
+    background-color: #fff; 
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 25px;
+    gap: 30px;
+    font-size: 1.1em;
+    width: 350px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.info-item span {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.info-item strong {
+    font-size: 1.8em;
+    color: #007bff; 
+}
+
+.pregunta-resultado-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pregunta-header-resultados {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.pregunta-header-resultados h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.btn-toggle-respuestas {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.respuestas-detalle-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    padding: 0 20px;
+}
+
+.respuestas-detalle-container.expanded {
+    max-height: 1000px; 
+    padding: 10px 20px 20px 20px;
+}
+
+.opcion-estadistica {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.respuestas-tabla {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.respuestas-tabla th, .respuestas-tabla td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+.respuestas-tabla th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
