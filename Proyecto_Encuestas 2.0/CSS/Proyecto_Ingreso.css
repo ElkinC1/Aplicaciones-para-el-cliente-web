@@ -123,21 +123,6 @@ h1 {
     background-color: #13e833;
 }
 
-/* Estilo para el hipervínculo */
-.login-hipervinculo {
-    display: block;
-    width: 350px;
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-
-    /* Estilos de apariencia */
-    color: #007bff; 
-    text-decoration: none;
-    font-size: 14px;
-    margin-top: 10px;
-}
 .error-box {
     display: none;
     background-color: #f8d7da; 

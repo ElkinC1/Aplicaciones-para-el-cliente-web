@@ -1,7 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background: url('LOGO_ULEAM.png') left top no-repeat #ccc7c7; 
-    background-size: 150px; 
+    background: white url(LOGO-ULEAM.png) no-repeat left top; 
+    background-size: 180px auto;
+
 
     margin: 0;
     padding: 0;
