@@ -1,44 +1,126 @@
-<!--Proyecto de Encuestas-->
-<!doctype html>
-<html>
-<Head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-        
-        <link rel="stylesheet" href="C:\Users\Usuario\Desktop\Universidad\U SEM4\Aplicaciones para el cliente Web\Tareas de ACW\Proyecto_Encuestas 2.0\CSS\Proyecto_Ingreso.css">
-        <Title>Encuestas - ULEAM </Title>
-    </Head>
-  <body>
-        <div class="login">
-            <h1> ENCUESTADOS </h1>
-            
-            <div id="mensaje-error" class="error-box">
-                ¡Error! El correo o la contraseña son incorrectos.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ingreso - Sistema de Encuestas ULEAM</title>
+    <link rel="stylesheet" href="../CSS/Proyecto_Ingreso.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <header class="top-bar">
+            <img src="LOGO-ULEAM.png" alt="Logo ULEAM" class="logo-header">
+            <div class="frase-random">
+                <transition name="fade" mode="out-in">
+                    <span :key="fraseActual" class="frase-universitaria">
+                        <i class="fas fa-quote-left"></i> 
+                        {{ fraseActual }}
+                        <i class="fas fa-quote-right"></i> 
+                    </span>
+                </transition>
             </div>
-            
-            <div class="correo">
-                <input type="email" id="correo" placeholder="Correo" required class="login-input">
-            </div> 
-            
-            <div class="input-clave-container">
-                <input type="password" id="clave" placeholder="Contraseña">
+        </header>
+
+        <div class="background-overlay"></div>
+
+        <div class="contenedor-del-login">
+            <form class="login" @submit.prevent="validarIngreso">
+                <h1>ENCUESTADOS</h1>
                 
-                <button type="button" id="togglePassword" class="toggle-password" onclick="toggleClave()">
-                    <i class="far fa-eye"></i> 
-                </button>
-            </div>
-            
-            <button type="button" class="login-button" onclick="botonIngreso()"> 
-                Ingresar
-            </button> 
-            
-            <div class="opcion-recordar">
-                <input type="checkbox" id="recordar-sesion">
-                <label for="recordar-sesion">Recordar sesión</label>
-            </div>
-        
+                <transition name="bounce">
+                    <div v-if="error" class="error-box">
+                        <i class="fas fa-exclamation-circle"></i> {{ mensajeError }}
+                    </div>
+                </transition>
+                
+                <div class="ingresos">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" 
+                           v-model="correo" 
+                           name="email"
+                           autocomplete="username"
+                           placeholder="Correo institucional" 
+                           class="login-input" 
+                           required>
+                </div> 
+                
+                <div class="ingresos">
+                    <i class="fas fa-lock"></i>
+                    <input :type="verClave ? 'text' : 'password'" 
+                           v-model="clave" 
+                           name="password"
+                           autocomplete="current-password"
+                           placeholder="Contraseña" 
+                           class="login-input" 
+                           required>
+                    <button type="button" class="toggle-password" @click="verClave = !verClave">
+                        <i :class="verClave ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+                    </button>
+                </div>
+                
+                <button type="submit" class="login-button">Ingresar</button> 
+                
+                <div class="botones-adicionales">
+                    <div class="opcion-recordar">
+                        <input type="checkbox" v-model="recordar" id="rec">
+                        <label for="rec">Recordar sesión</label>
+                    </div>
+                    <a href="#" class="link-registro" @click.prevent="mostrarRegistro = true">Crear cuenta</a>
+                </div>
+            </form>
         </div>
-    <script src="C:\Users\Usuario\Desktop\Universidad\U SEM4\Aplicaciones para el cliente Web\Tareas de ACW\Proyecto_Encuestas 2.0\JavaScript\Proyecto_ingreso.js"></script></body>
+
+        <transition name="fade">
+            <div v-if="mostrarRegistro" class="modal-overlay" @click.self="mostrarRegistro = false">
+                <form class="modal-registro" @submit.prevent="registrarUsuario">
+                    <h1 class="titulo-registro">ENCUESTADOS</h1>
+                    <h2>Crear Cuenta</h2>
+                    
+                    <div class="ingresos-registro">
+                        <input type="text" v-model="nuevoUsuario.nombre" placeholder="Nombre completo" class="login-input" required>
+                    </div>
+                    
+                    <div class="ingresos-registro">
+                        <input type="email" v-model="nuevoUsuario.correo" name="new-email" autocomplete="email" placeholder="Correo institucional" class="login-input" required>
+                    </div>
+                    
+                    <div class="ingresos">
+                        <i class="fas fa-lock"></i>
+                        <input :type="verClave ? 'text' : 'password'" 
+                               v-model="nuevoUsuario.clave" 
+                               name="new-password"
+                               autocomplete="new-password"
+                               placeholder="Contraseña" 
+                               class="login-input" 
+                               required>
+                        <button type="button" class="toggle-password" @click="verClave = !verClave">
+                            <i :class="verClave ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+                        </button>
+                    </div>
+
+                    <div class="ingresos-registro">
+                        <input type="password" v-model="nuevoUsuario.repetir_clave" placeholder="Repetir contraseña" class="login-input" required>
+                    </div>
+                    
+                    <div class="ingresos-registro">
+                        <select v-model="nuevoUsuario.rol" class="ingreso-rol" required>
+                            <option value="" disabled>¿Quién eres?</option>
+                            <option value="Estudiante">Estudiante (@live.uleam.edu.ec)</option>
+                            <option value="Profesor">Profesor (@uleam.edu.ec)</option>
+                            <option value="Administrador">Personal Administrativo / Secretaría</option>
+                        </select>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="submit" class="btn-registrar">Completar Registro</button>
+                        <button type="button" class="btn-cancelar" @click="mostrarRegistro = false">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </transition>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../JavaScript/Proyecto_Ingreso.js"></script>
+</body>
 </html>

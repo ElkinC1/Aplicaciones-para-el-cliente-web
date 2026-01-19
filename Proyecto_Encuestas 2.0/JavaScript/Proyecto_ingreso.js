@@ -1,93 +1,160 @@
-const URL_PRINCIPAL = '../HTML/Proyecto_Pagina_Principal.html';
+const { createApp } = Vue;
 
-const USUARIOS_DE_PRUEBA = [
-    { correo: 'admin@uleam.edu.ec', clave: 'admin123', rol: 'Administrador'},
-    { correo: 'profesor@uleam.edu.ec', clave: 'profe123', rol: 'Profesor'},
-    { correo: 'soyadmin@uleam.edu.ec', clave: 'soyadmin123', rol: 'Administrador'},
-    { correo: 'profeW@uleam.edu.ec', clave: 'whinter123', rol: 'Profesor'},
-    { correo: 'elkin@uleam.edu.ec', clave: 'elkin123', rol: 'Estudiante'},
-    { correo: 'melany@uleam.edu.ec', clave: 'melany123', rol: 'Estudiante'}
-];
-
-// A. Logica de ingreso y roles
-function mostrarMensajeError(mostrar = true) {
-    const errorBox = document.getElementById('mensaje-error');
-    if (errorBox) {
-        errorBox.style.display = mostrar ? 'block' : 'none';
-    }
-}
-
-function botonIngreso() {
-    mostrarMensajeError(false);
-
-    const correo = document.getElementById('correo').value.trim();
-    const clave = document.getElementById('clave').value.trim();
-    const recordar = document.getElementById('recordar-sesion').checked;
-
-    if (!correo || !clave) {
-        mostrarMensajeError(true);
-        return;
-    }
-
-    const usuarioEncontrado = USUARIOS_DE_PRUEBA.find(user => 
-        user.correo === correo && user.clave === clave
-    );
-
-    if (usuarioEncontrado) {
-        if (recordar) {
-            localStorage.setItem('userCorreo', usuarioEncontrado.correo);
-            localStorage.setItem('userRol', usuarioEncontrado.rol);
-        } else {
-            localStorage.removeItem('userCorreo');
-            localStorage.removeItem('userRol');
+createApp({
+    data() {
+        return {
+            // Datos para el Login (v-model en tu HTML)
+            correo: '',
+            clave: '',
+            verClave: false,
+            error: false,
+            mensajeError: '',
+            recordar: false,
+            
+            // Datos para el Registro
+            mostrarRegistro: false,
+            nuevoUsuario: {
+                nombre: '',
+                correo: '',
+                clave: '',
+                repetir_clave: '',
+                rol: ''
+            },
+            
+            // Sistema de Frases Random
+            fraseActual: '',
+            listaFrases: [
+                "No hay texto.",
+                "¿Dormir? no gracias, prefiero programar.",
+                "Hola mundo.",
+                "Los lentes son parte del outfit de un programador.",
+                "El que hace mas goles gana el partido.",
+                "Uleam >>> cualquier universidad.",
+                "Usa el poder de las encuestas con sabiduria.",
+                "No respondas encuestas bajo el efecto del insomnio.",
+                "Software es clave.",
+                "El conocimiento es libertad.",
+                "Ya lo ves la vida es asi, tu te vas y yo me quedo aqui.",
+            ]
         }
+    },
 
-        console.log(`Ingreso exitoso como: ${usuarioEncontrado.rol}`);
+    mounted() {
+        this.generarFraseAleatoria();
         
-        window.location.href = URL_PRINCIPAL; 
-
-    } else {
-        mostrarMensajeError(true);
-    }
-}
-
-
-// B. Funcion de mostrar/ocultar clave
-
-
-function toggleClave() {
-    const claveInput = document.getElementById('clave');
-    const toggleButton = document.getElementById('togglePassword');
-    const icon = toggleButton ? toggleButton.querySelector('i') : null; 
-
-    if (!claveInput || !toggleButton || !icon) return; 
-
-    if (claveInput.type === 'password') {
-        claveInput.type = 'text';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-    } else {
-        claveInput.type = 'password';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-    }
-}
-
-// C. funcion de mantener sesion iniciada
-
-window.onload = function() {
-    const rolGuardado = localStorage.getItem('userRol');
-    const recordarCheckbox = document.getElementById('recordar-sesion');
-
-    if (rolGuardado) {
-        if (recordarCheckbox) {
-            recordarCheckbox.checked = true;
+        const sesion = localStorage.getItem('usuarioSesion');
+        if (sesion) {
+            window.location.replace("Proyecto_Pagina_Principal.html");
         }
 
-        window.location.href = URL_PRINCIPAL;
-    } else {
-        if (recordarCheckbox) {
-             recordarCheckbox.checked = false;
+        // Bloqueo del botón "Atrás" para evitar regresar a sesiones cerradas
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function () {
+            window.history.go(1);
+        };
+    },
+
+    methods: {
+        generarFraseAleatoria() {
+            const indice = Math.floor(Math.random() * this.listaFrases.length);
+            this.fraseActual = this.listaFrases[indice];
+        },
+
+        async validarIngreso() {
+                this.error = false;
+                try {
+                    let usuariosJSON = [];
+                    
+
+                    try {
+                        const response = await fetch('../JavaScript/usuarios.json');
+                        if (response.ok) {
+                            const data = await response.json();
+                            usuariosJSON = data.usuarios;
+                        }
+                    } catch (fetchError) {
+console.warn("No se pudo cargar el JSON local (esto es normal si no usas un servidor). Usando solo datos de LocalStorage.");
+                    }
+
+                    const registradosLocal = JSON.parse(localStorage.getItem('usuarios') || '[]');
+
+                    const masterAdmin = { 
+                        id: 0, correo: 'admin@uleam.edu.ec', clave: 'Admin123', 
+                        nombre: 'Admin General', rol: 'ADMINISTRADOR', inicial: 'A' 
+                    };
+
+                    const dbCompleta = [masterAdmin, ...usuariosJSON, ...registradosLocal];
+
+                    const usuario = dbCompleta.find(u => 
+                        u.correo.toLowerCase() === this.correo.toLowerCase() && 
+                        u.clave === this.clave
+                    );
+
+                    if (usuario) {
+                        usuario.rol = usuario.rol.toUpperCase();
+                        localStorage.setItem('usuarioSesion', JSON.stringify(usuario));
+                        window.location.replace('Proyecto_Pagina_Principal.html');
+                    } else {
+                        this.mensajeError = "Correo o contraseña incorrectos.";
+                        this.error = true;
+                    }
+                } catch (e) {
+                    this.mensajeError = "Error crítico en el sistema de acceso.";
+                    this.error = true;
+                }
+            },
+        registrarUsuario() {
+            const { nombre, correo, clave, repetir_clave, rol } = this.nuevoUsuario;
+
+            if (!nombre || !correo || !clave || !repetir_clave || !rol) {
+                alert("Todos los campos son obligatorios.");
+                return;
+            }
+
+            const correoL = correo.toLowerCase();
+
+            // Validación de dominios @live para estudiantes
+            if (rol === 'Estudiante' && !correoL.endsWith("@live.uleam.edu.ec")) {
+                alert("Los estudiantes deben usar correo @live.uleam.edu.ec");
+                return;
+            }
+            if ((rol === 'Profesor' || rol === 'Administrador') && !correoL.endsWith("@uleam.edu.ec")) {
+                alert("Docentes y Administrativos deben usar correo @uleam.edu.ec");
+                return;
+            }
+
+            // Regex de seguridad para contraseña
+            const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!passRegex.test(clave)) {
+                alert("Contraseña débil. Debe tener:\n- Al menos 8 caracteres\n- Una letra Mayúscula\n- Una letra Minúscula\n- Al menos un Número");
+                return;
+            }
+
+            if (clave !== repetir_clave) {
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+
+            let usuariosDB = JSON.parse(localStorage.getItem('usuarios') || '[]');
+            if (usuariosDB.some(u => u.correo === correoL)) {
+                alert("Este correo ya está registrado.");
+                return;
+            }
+
+            // Guardar con formato compatible para la sidebar
+            usuariosDB.push({ 
+                id: Date.now(),
+                nombre, 
+                correo: correoL, 
+                clave, 
+                rol: rol.toUpperCase(),
+                inicial: nombre.charAt(0).toUpperCase()
+            });
+
+            localStorage.setItem('usuarios', JSON.stringify(usuariosDB));
+            alert(rol + " " + nombre + " ¡Cuenta creada!");
+            this.mostrarRegistro = false;
+            this.nuevoUsuario = { nombre: '', correo: '', clave: '', repetir_clave: '', rol: '' };
         }
     }
-};
+}).mount('#app');

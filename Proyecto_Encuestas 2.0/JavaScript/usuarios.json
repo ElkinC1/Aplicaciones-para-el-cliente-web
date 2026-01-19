@@ -1,0 +1,28 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "correo": "elkin.cantos@uleam.edu.ec",
+      "clave": "profe123",
+      "rol": "PROFESOR",
+      "nombre": "Elkin Cantos",
+      "inicial": "E"
+    },
+    {
+      "id": 2,
+      "correo": "admin@uleam.edu.ec",
+      "clave": "admin123",
+      "rol": "ADMINISTRADOR",
+      "nombre": "Administrador",
+      "inicial": "A"
+    },
+    {
+      "id": 3,
+      "correo": "juan.perez@live.uleam.edu.ec",
+      "clave": "est123",
+      "rol": "ESTUDIANTE",
+      "nombre": "Juan Pérez",
+      "inicial": "J"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "encuestas": [
+    {
+      "id": 1,
+      "titulo": "Materia favorita",
+      "descripcion": "Análisis académico 2024",
+      "estado": "ACTIVA",
+      "totalVotos": 2,
+      "duracion": "5",
+      "preguntas": [
+        {
+          "id": 101,
+          "texto": "¿Cuál es tu materia favorita?",
+          "opciones": [
+            { "texto": "Programación", "votos": 1 },
+            { "texto": "Base de Datos", "votos": 1 }
+          ],
+          "respuestasDetalle": [
+            { "nombreUsuario": "ELKIN OMAR CANTOS", "opcionElegida": "Programación" },
+            { "nombreUsuario": "MARIA GARCIA", "opcionElegida": "Base de Datos" }
+          ]
+        }
+      ]
+    }
+  ]
+}

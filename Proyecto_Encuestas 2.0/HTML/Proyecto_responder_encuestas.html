@@ -4,53 +4,79 @@
     <meta charset="UTF-8">
     <title>Responder Encuesta - ULEAM</title>
     <link rel="stylesheet" href="../CSS/Proyecto_responder_Encuestas.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-    <div class="page-background">
-
-        <div class="response-container">
-            
-            <header class="response-header">
-                <button class="btn-back" onclick="window.location.href='Proyecto_Pagina_Principal.html'">
-                    <i class="fas fa-arrow-left"></i> Volver al Panel
-                </button>
-                <h1 id="titulo-encuesta-responder">Seleccione una Encuesta para Responder</h1>
-                
-                <button class="btn-seleccionar-encuesta" onclick="mostrarModalSeleccion()">
-                    <i class="fas fa-list-alt"></i> Ver Encuestas Pendientes
-                </button>
-            </header>
-
-            <form id="formulario-respuestas" class="encuesta-form" onsubmit="event.preventDefault(); guardarRespuestas()">
-                
-                <p id="descripcion-encuesta-responder" class="descripcion-responder">
-                    Presione "Ver Encuestas Pendientes" para empezar.
-                </p>
-                
-                <div id="preguntas-responder-container">
-                    <p>Las preguntas del formulario aparecerán aquí una vez seleccionada la encuesta.</p>
+    <div id="app" v-cloak>
+        <nav class="top-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="LOGO-ULEAM.png" class="nav-logo">
+                    <div class="nav-divider"></div>
+                    <span class="nav-title">ENCUESTADOS</span>
                 </div>
-                
-                <button type="submit" id="btn-enviar-respuestas" class="btn-submit-response" style="display:none;">
-                    <i class="fas fa-paper-plane"></i> Enviar Respuestas
-                </button>
-            </form>
-
-        </div>
-    </div>
-    
-    <div id="modal-seleccion-encuesta" class="modal-oculto">
-        <div class="modal-contenido">
-            <h3>Encuestas Pendientes</h3>
-            <div id="lista-encuestas-pendientes" class="lista-encuestas">
-                <p>Cargando lista...</p>
+                <div class="nav-user">
+                    <i class="fas fa-user-circle"></i> <span>{{ usuarioActual.nombre }}</span>
+                </div>
             </div>
-            <button class="btn-cerrar-modal" onclick="ocultarModalSeleccion()">Cerrar</button>
+        </nav>
+        <div class="page-background">
+            <div class="response-container" :style="{ borderTop: '10px solid ' + (encuestaSeleccionada ? encuestaSeleccionada.colorTema : '#1a4d2e'), backgroundColor: encuestaSeleccionada ? encuestaSeleccionada.colorTema + '10' : 'white' }">
+                
+                <header class="response-header">
+                    <button class="btn-back" @click="volver">
+                        <i class="fas fa-arrow-left"></i> {{ encuestaSeleccionada ? 'Cancelar' : 'Volver' }}
+                    </button>
+                    <h1>{{ encuestaSeleccionada ? encuestaSeleccionada.titulo : 'Encuestas Pendientes' }}</h1>
+                </header>
+
+                <div v-if="!encuestaSeleccionada">
+                    <div v-for="encuesta in encuestas" :key="encuesta.id" class="pendiente-card" @click="seleccionarEncuesta(encuesta)">
+                        <div class="info">
+                            <h4>{{ encuesta.titulo }}</h4>
+                            <p>{{ encuesta.descripcion }}</p>
+                            <span class="btn-seleccionar">Responder ahora <i class="fas fa-edit"></i></span>
+                        </div>
+                    </div>
+                    <div v-if="encuestas.length === 0" class="no-data">
+                        <i class="fas fa-check-circle"></i>
+                        <p>No tienes encuestas pendientes por responder.</p>
+                    </div>
+                </div>
+
+                <form v-else @submit.prevent="enviarRespuestas">
+                    <p class="descripcion-responder">{{ encuestaSeleccionada.descripcion }}</p>
+                    
+                    <div v-for="(p, index) in encuestaSeleccionada.preguntas" :key="p.id" class="pregunta-responder-card">
+                        <h3>{{ index + 1 }}. {{ p.texto }}</h3>
+
+                        <div class="pregunta-inputs">
+                            <div v-if="p.tipo === 'radio'">
+                                <label v-for="opt in p.opciones" class="opcion-label">
+                                    <input type="radio" :name="'q'+p.id" :value="opt.texto" v-model="respuestasMap[p.id]" required>
+                                    {{ opt.texto }}
+                                </label>
+                            </div>
+
+                            <div v-if="p.tipo === 'checkbox'">
+                                <label v-for="opt in p.opciones" class="opcion-label">
+                                    <input type="checkbox" :value="opt.texto" v-model="respuestasMap[p.id]">
+                                    {{ opt.texto }}
+                                </label>
+                            </div>
+
+                            <div v-if="p.tipo === 'texto'">
+                                <textarea v-model="respuestasMap[p.id]" placeholder="Tu respuesta aquí..." required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit-response">Finalizar y Enviar</button>
+                </form>
+            </div>
         </div>
     </div>
-    
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../JavaScript/Proyecto_responder_Encuestas.js"></script>
 </body>
 </html>
