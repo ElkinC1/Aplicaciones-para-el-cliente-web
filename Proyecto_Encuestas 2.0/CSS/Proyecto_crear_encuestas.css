@@ -47,7 +47,8 @@ body, html { margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif;
 .email-box small { color: #5f6368; margin-top: 5px; display: block; font-style: italic; }
 
 /* Barra de Herramientas Flotante */
-.forms-toolbar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: white; padding: 10px 24px; border-radius: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 20px; z-index: 1001; border: 1px solid #dadce0; }
+.forms-toolbar { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); background: white; padding: 10px 24px; border-radius: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+     display: flex; align-items: center; gap: 20px; z-index: 1001; border: 1px solid #dadce0; }
 .tool-group { display: flex; align-items: center; gap: 15px; }
 .tool-group button { background: none; border: none; font-size: 20px; color: #5f6368; cursor: pointer; }
 .tool-group button:hover { color: #1a4d2e; transform: scale(1.1); }
