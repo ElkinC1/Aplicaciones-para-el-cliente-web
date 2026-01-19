@@ -25,7 +25,7 @@ createApp({
     },
     mounted() {
         if (!this.usuarioActual) {
-            window.location.replace("Proyecto_ingreso.html");
+            window.location.replace("Proyecto_Ingreso.html");
             return;
         }
         this.agregarPregunta('radio');

@@ -10,7 +10,7 @@ createApp({
         }
     },
     mounted() {
-        if (!this.usuarioActual.correo) { window.location.replace("Proyecto_ingreso.html"); return; }
+        if (!this.usuarioActual.correo) { window.location.replace("Proyecto_Ingreso.html"); return; }
         this.cargarEncuestas();
     },
     methods: {

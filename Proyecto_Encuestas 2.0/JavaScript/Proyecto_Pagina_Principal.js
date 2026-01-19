@@ -18,7 +18,7 @@ createApp({
     async mounted() {
         const sesion = localStorage.getItem('usuarioSesion');
         if (!sesion) {
-            window.location.replace("Proyecto_ingreso.html");
+            window.location.replace("Proyecto_Ingreso.html");
             return;
         }
         
@@ -106,7 +106,7 @@ createApp({
         cerrarSesion() {
             if (confirm("¿Deseas cerrar la sesión?")) {
                 localStorage.removeItem('usuarioSesion');
-                window.location.replace("Proyecto_ingreso.html");
+                window.location.replace("Proyecto_Ingreso.html");
             }
         }
     }
